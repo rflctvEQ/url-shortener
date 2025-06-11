@@ -48,6 +48,9 @@ const styles: { [key: string]: CSSProperties } = {
       margin: 0
     }
   },
+  error: {
+    color: 'red'
+  }
 }
 
 const UrlShortenerForm = ({ setShortenedUrlData, setIsFormView }: Props) => {
@@ -116,7 +119,7 @@ const UrlShortenerForm = ({ setShortenedUrlData, setIsFormView }: Props) => {
         isLoading
           ? <h2> Loading...</h2 >
           : error
-            ? <h2 style={{ color: 'red' }}>{`${error} - Refresh and try again.`}</h2>
+            ? <h2 style={styles.error}>{`${error} - Refresh and try again.`}</h2>
             : (
               <>
                 <h2 style={styles.header}>Enter URL to shorten</h2>

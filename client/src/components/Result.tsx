@@ -44,7 +44,7 @@ const Result = ({ shortenedUrlData }: Props) => {
     <h2 style={styles.header}>Shortened URL created successfully!</h2>
 
     <div style={styles.shortUrlWrapper}>
-      <p><strong>Short URL :</strong> {shortenedUrlData?.shortUrl}</p>
+      <p><strong>Short URL:</strong> {shortenedUrlData?.shortUrl}</p>
       {
         copiedText
           ? <p style={copiedText.includes('Failed') ? styles.error : styles.success}>{copiedText}</p>

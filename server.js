@@ -1,5 +1,4 @@
 const express = require('express')
-const path = require('path')
 const routes = require('./app/routes')
 const cors = require('cors')
 const app = express()
@@ -12,7 +11,6 @@ app.use(express.json())
 app.use(routes)
 
 app.get('/api/health', (req, res) => {
-  console.log('*** health endpoint hit')
   res.send({ message: `Running on port ${port}` })
 })
 

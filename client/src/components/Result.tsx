@@ -8,14 +8,26 @@ interface Props {
 }
 
 const styles: { [key: string]: CSSProperties } = {
+  wrapper: {
+    maxWidth: '100vw',
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'left'
+  },
   header: {
     color: 'green'
   },
   shortUrlWrapper: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+  },
+  shortUrl: {
+    marginRight: '16px'
+  },
+  longUrl: {
+    textAlign: 'left',
+    wordBreak: 'break-all'
   },
   success: {
     color: 'green'
@@ -24,7 +36,8 @@ const styles: { [key: string]: CSSProperties } = {
     color: 'red'
   },
   newButton: {
-    marginTop: '12px'
+    margin: '50px auto',
+    maxWidth: '125px'
   }
 }
 
@@ -40,21 +53,21 @@ const Result = ({ shortenedUrlData }: Props) => {
     }
   }
 
-  return <>
+  return <div style={styles.wrapper}>
     <h2 style={styles.header}>Shortened URL created successfully!</h2>
 
     <div style={styles.shortUrlWrapper}>
-      <p><strong>Short URL:</strong> {shortenedUrlData?.shortUrl}</p>
+      <p style={styles.shortUrl}><strong>Short URL:</strong> {shortenedUrlData?.shortUrl}</p>
       {
         copiedText
           ? <p style={copiedText.includes('Failed') ? styles.error : styles.success}>{copiedText}</p>
           : <Button buttonText='Copy' buttonType='button' onClick={() => copyToClipboard(shortenedUrlData?.shortUrl ?? '')} />
       }
     </div>
-    <p><strong>Original long URL: </strong>{shortenedUrlData?.longUrl}</p>
+    <p style={styles.longUrl}><strong>Original long URL: </strong>{shortenedUrlData?.longUrl}</p>
 
     <Button style={styles.newButton} buttonText='New URL' buttonType='button' onClick={() => window.location.reload()} />
-  </>
+  </div>
 }
 
 export default Result
